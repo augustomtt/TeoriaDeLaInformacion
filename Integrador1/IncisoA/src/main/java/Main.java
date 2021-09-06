@@ -11,7 +11,7 @@ public class Main {
     static TreeMap<String, Integer> digitos9 = new TreeMap<>();
 
     public static void main(String[] args) throws IOException {
-        PrintStream out = new PrintStream(new FileOutputStream("salidaIncisoA.txt"));
+        PrintStream out = new PrintStream(new FileOutputStream("IncisoA/salidaIncisoA.txt"));
         System.setOut(out);
         CargaPalabras(5, digitos5);
         CargaPalabras(7, digitos7);
