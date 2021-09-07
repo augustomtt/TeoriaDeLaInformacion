@@ -29,8 +29,18 @@ public class Main {
         int car;
         Integer cantActual;
         StringBuilder pal;
+        String ceros ="";
+        for (int p=0;p<cantDigitos;p++)
+            ceros += 0;
+
+
+        for(int i=0;i<Math.pow(2,cantDigitos);i++){
+            String binario = Integer.toBinaryString(i);
+            map.put((ceros + binario).substring(binario.length()),0);
+        }
+
         try {
-            FileReader entrada = new FileReader("anexo1-grupo2.txt");
+            FileReader entrada = new FileReader("IncisoA/anexo1-grupo2.txt");
             car = entrada.read();
             while (car != -1) {
                 pal = new StringBuilder("" + (char) car);
@@ -39,7 +49,7 @@ public class Main {
                     pal.append((char) car);
                 }
                 cantActual = map.get(pal.toString());
-                map.put(pal.toString(), cantActual == null ? 1 : cantActual + 1);
+                map.put(pal.toString(), cantActual+1);
                 car = entrada.read(); //por la lectura anticipada
             }
             entrada.close();
