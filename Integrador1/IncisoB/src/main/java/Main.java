@@ -55,8 +55,9 @@ public class Main {
         }
         System.out.println("\n");
         for (int i = 0; i < 4; i++) {
+            sumafila = probsmat[i][0]+probsmat[i][1]+probsmat[i][2]+probsmat[i][3];
             for (int j = 0; j < 4; j++) {
-                System.out.println("P("+binario[i]+" | anterior es "+ binario[j]+") es: "+ probsmat[i][j]/(float)totaldatos + " ("+probsmat[i][j]+" ocurrencias total)");
+                System.out.println("P("+binario[i]+" | anterior es "+ binario[j]+") es: "+ probsmat[i][j]/(float)sumafila + " ("+probsmat[i][j]+" ocurrencias total)");
 
             }
 

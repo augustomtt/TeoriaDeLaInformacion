@@ -1,0 +1,3 @@
+Junto con el archivo .jar debe también encontrarse un archivo "matriz.txt" que contenga todas las componenentes de la matriz.
+
+Actualmente, el archivo "matriz.txt" está cargado con los datos obtenidos del inciso b) del trabajo practico.

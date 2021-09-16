@@ -1,0 +1,2 @@
+Para la matriz cargada, el vector estacionario es: V* = [0,250 0,250 0,250 0,250]
+La entropía de esta fuente Markoviana de orden 1 es: 1.99966502181747
