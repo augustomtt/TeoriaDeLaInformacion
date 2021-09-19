@@ -11,7 +11,7 @@ public class Main {
     static TreeMap<String, Integer> digitos9 = new TreeMap<>();
 
     public static void main(String[] args) throws IOException {
-        PrintStream out = new PrintStream(new FileOutputStream("IncisoA/salidaIncisoA.txt"));
+        PrintStream out = new PrintStream(new FileOutputStream("salidaIncisoA.txt"));
         System.setOut(out);
         CargaPalabras(5, digitos5);
         CargaPalabras(7, digitos7);
@@ -40,7 +40,7 @@ public class Main {
         }
 
         try {
-            FileReader entrada = new FileReader("IncisoA/anexo1-grupo2.txt");
+            FileReader entrada = new FileReader("anexo1-grupo2.txt");
             car = entrada.read();
             while (car != -1) {
                 pal = new StringBuilder("" + (char) car);
@@ -68,8 +68,12 @@ public class Main {
         for (String palabra: map.keySet()) {
             probactual = (float)map.get(palabra)/cantTotalPalabras;
             acumprob += probactual;
-            informacionactual = -Math.log(probactual)/Math.log(2);
-            acumulaEntropia += informacionactual*probactual;
+            if (probactual !=0) {
+                informacionactual = -Math.log(probactual) / Math.log(2);
+                acumulaEntropia += informacionactual * probactual;
+            } else {
+                informacionactual = 0; // por definicion si P(a) = 0 --> I(a) =0
+            }
             System.out.printf("%s : Cant. de apariciones: %d  | P(\"%s\") = %.5f | I(\"%s\") = %.6f \n",palabra,map.get(palabra),palabra,probactual,palabra,informacionactual);
         }
         System.out.printf("La suma de todas las probabilidades es: %.5f\n", acumprob);
