@@ -34,7 +34,7 @@
 11110 : Cant. de apariciones: 191  | P("11110") = 0,03032 | I("11110") = 5,043707 
 11111 : Cant. de apariciones: 188  | P("11111") = 0,02984 | I("11111") = 5,066547 
 La suma de todas las probabilidades es: 1,00000
-La entrop√≠a de la fuente de palabras de longitud 5 es: 4,99719
+La entropÌa de la fuente de palabras de longitud 5 es: 4,99719
 
  === Palabras de 7 digitos === 
 
@@ -167,7 +167,7 @@ La entrop√≠a de la fuente de palabras de longitud 5 es: 4,99719
 1111110 : Cant. de apariciones: 38  | P("1111110") = 0,00844 | I("1111110") = 6,887782 
 1111111 : Cant. de apariciones: 36  | P("1111111") = 0,00800 | I("1111111") = 6,965784 
 La suma de todas las probabilidades es: 1,00000
-La entrop√≠a de la fuente de palabras de longitud 7 es: 6,98132
+La entropÌa de la fuente de palabras de longitud 7 es: 6,98132
 
  === Palabras de 9 digitos === 
 
@@ -684,4 +684,4 @@ La entrop√≠a de la fuente de palabras de longitud 7 es: 6,98132
 111111110 : Cant. de apariciones: 12  | P("111111110") = 0,00343 | I("111111110") = 8,188177 
 111111111 : Cant. de apariciones: 7  | P("111111111") = 0,00200 | I("111111111") = 8,965784 
 La suma de todas las probabilidades es: 1,00000
-La entrop√≠a de la fuente de palabras de longitud 9 es: 8,88113
+La entropÌa de la fuente de palabras de longitud 9 es: 8,88113
