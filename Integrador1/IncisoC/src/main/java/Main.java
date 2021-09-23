@@ -38,7 +38,7 @@ public class Main {
             }
             entropia += vectorEstacionario[i] * auxcol;
         }
-        System.out.println("La entropía de esta fuente Markoviana de orden 1 es: " + entropia);
+        System.out.println("La entropía de esta fuente de orden 1 es: " + entropia);
 
     }
 
