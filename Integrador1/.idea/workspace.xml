@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="315b35cc-8ad3-410a-b6a9-7b9488f2b8cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/IncisoC/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IncisoB/salidaIncisoB.txt" beforeDir="false" afterPath="$PROJECT_DIR$/IncisoB/salidaIncisoB.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IncisoB/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/IncisoB/src/main/java/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="315b35cc-8ad3-410a-b6a9-7b9488f2b8cc" name="Changes" comment="Changes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
