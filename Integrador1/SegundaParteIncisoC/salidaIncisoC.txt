@@ -1,0 +1,9 @@
+------Palabras de 5 digitos------
+Rendimiento: 99.94373261482713%
+Redundancia: 0.05626738517287011%
+------Palabras de 7 digitos------
+Rendimiento: 99.73309928494962%
+Redundancia: 0.2669007150503777%
+------Palabras de 9 digitos------
+Rendimiento: 98.67920564608012%
+Redundancia: 1.320794353919874%
