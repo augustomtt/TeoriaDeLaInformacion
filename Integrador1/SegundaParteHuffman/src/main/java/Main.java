@@ -1,9 +1,11 @@
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
@@ -20,27 +22,40 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException {
-
-        CargaArbolInicial(5, longitud5);
-        CargaArbolInicial(7, longitud7);
-        CargaArbolInicial(9, longitud9);
+        PrintStream out = new PrintStream("salidaHuffman.txt");
+        System.setOut(out);
+        cargaArbolInicial(5, longitud5);
+        cargaArbolInicial(7, longitud7);
+        cargaArbolInicial(9, longitud9);
 
         raiz5 = GeneraArbol(longitud5);
         raiz7 = GeneraArbol(longitud7);
         raiz9 = GeneraArbol(longitud9);
 
-        Huffman(raiz5);
-        Huffman(raiz7);
-        Huffman(raiz9);
+        huffman(raiz5);
+        huffman(raiz7);
+        huffman(raiz9);
 
-        Recontruir(5, raiz5);
-        Recontruir(7, raiz7);
-        Recontruir(9, raiz9);
+        recontruir(5, raiz5);
+        recontruir(7, raiz7);
+        recontruir(9, raiz9);
 
+        verificaLongitudes(5, raiz5);
+        verificaLongitudes(7, raiz7);
+        verificaLongitudes(9, raiz9);
+    }
+
+    private static void verificaLongitudes(int cantDigitos, Nodo raiz) {
+        if (raiz != null) {
+            if (raiz.getCadNueva().length() < cantDigitos && !(raiz.getCadOriginal()==null))
+                System.out.println("En longitud "+cantDigitos+" al simbolo "+raiz.getCadOriginal()+" se le asignó una cadena de longitud menor ("+raiz.getCadNueva().length()+") "+raiz.getCadNueva());
+            verificaLongitudes(cantDigitos, raiz.getIzq());
+            verificaLongitudes(cantDigitos, raiz.getDer());
+        }
     }
 
 
-    public static void CargaArbolInicial(int cantDigitos, PriorityQueue<Nodo> arbol) {
+    public static void cargaArbolInicial(int cantDigitos, PriorityQueue<Nodo> arbol) {
         String cadaux;
         File arch = new File("probabilidades" + cantDigitos + ".txt");
         Scanner entrada = null;
@@ -72,18 +87,18 @@ public class Main {
         return arbol.poll(); //La estructura queda vacia y el arbol quedó armado en raiz.
     }
 
-    public static void Huffman(Nodo raiz) {
+    public static void huffman(Nodo raiz) {
         if (raiz.getIzq() != null) {
             raiz.getIzq().setCadNueva(raiz.getCadNueva() + '0');
-            Huffman(raiz.getIzq());
+            huffman(raiz.getIzq());
         }
         if (raiz.getDer() != null) {
             raiz.getDer().setCadNueva(raiz.getCadNueva() + '1');
-            Huffman(raiz.getDer());
+            huffman(raiz.getDer());
         }
     }
 
-    private static void Recontruir(int cantDigitos, Nodo raiz) throws IOException {
+    private static void recontruir(int cantDigitos, Nodo raiz) throws IOException {
         int car;
         String nuevapal;
 
