@@ -1,0 +1,9 @@
+-------Palabras de 5 Digitos-------:
+Kraft: 1.0
+Longitud Media: 5.000000059604645
+-------Palabras de 7 Digitos-------:
+Kraft: 1.0
+Longitud Media: 7.000000040978193
+-------Palabras de 9 Digitos:-------:
+Kraft: 1.0
+Longitud Media: 9.000000154133886
