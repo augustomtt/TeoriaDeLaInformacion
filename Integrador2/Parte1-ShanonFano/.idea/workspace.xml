@@ -4,11 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="555ab909-f5a9-4502-b7d6-0ea24e3653eb" name="Changes" comment="" />
+    <list default="true" id="555ab909-f5a9-4502-b7d6-0ea24e3653eb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Parte1-RLC/.idea/modules.xml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -33,6 +42,7 @@
       <option name="presentableId" value="Default" />
       <updated>1635372168700</updated>
       <workItem from="1635372170047" duration="23000" />
+      <workItem from="1635528222233" duration="71000" />
     </task>
     <servers />
   </component>
