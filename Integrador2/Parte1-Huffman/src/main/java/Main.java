@@ -105,7 +105,7 @@ public class Main {
             entrada.close();
             salida.close();
         } catch (FileNotFoundException e) {
-            System.out.println("NO SE ENCONTRADO EL ARCHIVO DE ENTRADA: \"anexo1-grupo2.txt\"! Verifique que exista el archivo");
+            System.out.println("NO SE ENCONTRADO EL ARCHIVO DE ENTRADA Verifique que exista el archivo");
         }
     }
 }
