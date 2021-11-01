@@ -5,9 +5,9 @@ import java.io.PrintStream;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        aplicarRLC("Argentina.txt");
         aplicarRLC("imagen.raw");
-        aplicarRLC("Danes.txt");;
+        aplicarRLC("Argentina.txt");
+        aplicarRLC("Danes.txt");
     }
 
     private static void aplicarRLC(String nombre) throws IOException {
@@ -19,14 +19,15 @@ public class Main {
         entrada = new FileReader(nombre);
         int car = entrada.read();
         while (car != -1) {
-            letraactual=(char)car;
+            letraactual = (char) car;
             cont = 0;
             while (car == letraactual) {
-                car = entrada.read();
+                do {
+                    car = entrada.read();
+                } while ((car == 10 || car == 13) && nombre.equals("imagen.raw"));
                 cont++;
             }
-            System.out.print(cont +""+letraactual); //comillas necesarias
+            System.out.print(cont + "" + letraactual + (nombre.equals("imagen.raw")?"\n":"")); //comillas necesarias
         }
     }
-
 }
