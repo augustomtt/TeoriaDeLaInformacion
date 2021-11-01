@@ -15,21 +15,26 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException {
-        //aplicarHuffman("imagen.txt",probabilidades,letras); //TODO Revisar que hacer con los dos primeros datos (256x256) Son la longitud de la foto
-        aplicarHuffman("Argentina.txt", probabilidades, letras);
+        aplicarHuffman("imagen.raw", probabilidades, letras); //TODO Revisar que hacer con los dos primeros datos (256x256) Son la longitud de la foto
         aplicarHuffman("Danes.txt", probabilidades, letras);
+        aplicarHuffman("Argentina.txt", probabilidades, letras);
         System.out.println("fin - todos los archivos huffman creados sin errores");
 
 
     }
 
     private static void aplicarHuffman(String nombre, PriorityQueue<Nodo> probabilidades, TreeMap<Character, Integer> letras) throws IOException {
+        long tiempoInicio = System.nanoTime();
+
         letras = new TreeMap<>();
         probabilidades = new PriorityQueue<>(120, new ComparaNodos());
         cargaProbabilidades(nombre, probabilidades, letras);
         raiz = GeneraArbol(probabilidades);
         huffman(raiz);
         recontruir(nombre, raiz);
+        long tiempoFinal = System.nanoTime();
+        long tiemporesultante = tiempoFinal - tiempoInicio;
+        System.out.println("Aplicar Hufmman a "+nombre+ " tardó "+ tiemporesultante/1000000 +" milisegundos");
     }
 
     private static void cargaProbabilidades(String nombrearch, PriorityQueue<Nodo> probabilidades, TreeMap<Character, Integer> letras) throws IOException {
