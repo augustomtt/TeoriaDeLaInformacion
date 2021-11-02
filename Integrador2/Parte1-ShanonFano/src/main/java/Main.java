@@ -21,9 +21,15 @@ public class Main {
     }
     private static void aplicarShannon(String nombrearch,ArrayList<Simbolo> letras) throws IOException {
           cargaProbabilidades(nombrearch,letras);
+          
           Collections.sort(letras);
           Collections.reverse(letras);
           ShannonFano.codificar(letras,0,letras.size()-1);
+          double entropia = calculaEntropia(letras);
+          double longitud = longitudMedia(letras);
+          double rendimiento = entropia/longitud;
+          System.out.println("Rendimiento: "+rendimiento);
+          System.out.println("Redundancia: "+(1-rendimiento));
           comprimir(nombrearch,letras);
     }
     private static void cargaProbabilidades(String nombrearch, ArrayList<Simbolo> letras) throws IOException {
@@ -79,5 +85,20 @@ public class Main {
            } catch (FileNotFoundException e) {
                System.out.println("No se encontro el archivo: "+nombrearch);
            }
+    }
+    public static double calculaEntropia(ArrayList<Simbolo> letras) {
+    	double entropia = 0,informacion=0;
+    	for(int i=0;i<letras.size();i++) {
+    		informacion = -Math.log(letras.get(i).getProbabilidad())/Math.log(2);
+    		entropia+=informacion*letras.get(i).getProbabilidad();
+    	}
+    	return entropia;
+    }
+    public static double longitudMedia(ArrayList<Simbolo> letras) {
+    	double acum = 0;
+    	for(int i=0;i<letras.size();i++) {
+    		acum+= (double)(letras.get(i).getProbabilidad()*letras.get(i).getCodigo().length());
+    	}
+    	return acum;
     }
 }
