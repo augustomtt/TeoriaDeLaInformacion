@@ -12,7 +12,7 @@ import java.util.TreeMap;
 public class Main {
     public static void main(String[] args) throws IOException {
      ArrayList<Simbolo> letras  = new ArrayList<>();
-		
+      aplicarShannon("imagen.raw",letras);
 	  aplicarShannon("Argentina.txt",letras);
 	  aplicarShannon("Danes.txt",letras);
 	  System.out.println("Compresion terminada sin errores");
