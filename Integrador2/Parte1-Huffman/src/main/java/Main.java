@@ -3,7 +3,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.math.BigInteger;
+import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.TreeMap;
 
@@ -15,7 +17,7 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException {
-        aplicarHuffman("imagen.raw", probabilidades, letras); //TODO Revisar que hacer con los dos primeros datos (256x256) Son la longitud de la foto
+        aplicarHuffman("imagen.raw", probabilidades, letras);
         aplicarHuffman("Danes.txt", probabilidades, letras);
         aplicarHuffman("Argentina.txt", probabilidades, letras);
         System.out.println("fin - todos los archivos huffman creados sin errores");
@@ -25,16 +27,27 @@ public class Main {
 
     private static void aplicarHuffman(String nombre, PriorityQueue<Nodo> probabilidades, TreeMap<Character, Integer> letras) throws IOException {
         long tiempoInicio = System.nanoTime();
+        double rendimiento,entropia, longitudMedia;
 
         letras = new TreeMap<>();
         probabilidades = new PriorityQueue<>(120, new ComparaNodos());
         cargaProbabilidades(nombre, probabilidades, letras);
         raiz = GeneraArbol(probabilidades);
         huffman(raiz);
+        entropia = CalculaEntropia(raiz);
+        longitudMedia = longitudMedia(raiz);
+        rendimiento = entropia/longitudMedia;
         recontruir(nombre, raiz);
         long tiempoFinal = System.nanoTime();
         long tiemporesultante = tiempoFinal - tiempoInicio;
-        System.out.println("Aplicar Hufmman a "+nombre+ " tardó "+ tiemporesultante/1000000 +" milisegundos");
+
+        System.out.println("Aplicar Huffman a " + nombre + " tardó " + tiemporesultante / 1000000 + " milisegundos");
+        PrintStream defaultOut = System.out;
+        FileOutputStream fos = new FileOutputStream("resultados"+nombre.substring(0, nombre.length() - 3) + "txt");
+        PrintStream out = new PrintStream(fos);
+        System.setOut(out);
+        System.out.println("Para el archivo "+nombre+ " el rendimiento es de: "+ rendimiento+"\nLa redundancia es de "+(1-rendimiento)+"\n");
+        System.setOut(defaultOut);
     }
 
     private static void cargaProbabilidades(String nombrearch, PriorityQueue<Nodo> probabilidades, TreeMap<Character, Integer> letras) throws IOException {
@@ -113,5 +126,28 @@ public class Main {
             System.out.println("NO SE ENCONTRADO EL ARCHIVO DE ENTRADA Verifique que exista el archivo");
         }
     }
+
+    private static double CalculaEntropia(Nodo arbol) { //Sumar todos los nodos hoja * probabilidad
+        if (arbol == null)
+            return 0;
+        else {
+            if (arbol.getIzq() == null && arbol.getDer() == null)
+                return (-Math.log(arbol.getValor()) / Math.log(2)) * arbol.getValor();
+            else
+                return CalculaEntropia(arbol.getIzq()) + CalculaEntropia(arbol.getDer());
+        }
+    }
+
+    public static double longitudMedia(Nodo arbol) {
+        if (arbol == null)
+            return 0;
+        else {
+            if (arbol.getIzq() == null && arbol.getDer() == null)
+                return arbol.getCadNueva().length() * arbol.getValor();
+            else
+                return longitudMedia(arbol.getIzq()) + longitudMedia(arbol.getDer());
+        }
+    }
 }
+
 

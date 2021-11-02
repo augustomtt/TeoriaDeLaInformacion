@@ -1,0 +1,3 @@
+Para el archivo Argentina.txt el rendimiento es de: 0.9923731493953918
+La redundancia es de 0.007626850604608215
+
