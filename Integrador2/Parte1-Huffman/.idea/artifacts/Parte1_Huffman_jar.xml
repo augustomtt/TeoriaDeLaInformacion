@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Parte1-Huffman:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Parte1_Huffman_jar</output-path>
+    <root id="archive" name="Parte1-Huffman.jar">
+      <element id="module-output" name="Parte1-Huffman" />
+    </root>
+  </artifact>
+</component>
