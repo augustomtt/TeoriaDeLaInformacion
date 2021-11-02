@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.math.BigInteger;
-import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.TreeMap;
 
@@ -102,7 +101,7 @@ public class Main {
 
     private static void recontruir(String nombrearch, Nodo raiz) throws IOException {
         int car;
-        String cadenabinaria = "";
+        StringBuilder cadenabinaria = new StringBuilder();
         String nuevocod;
 
         try {
@@ -114,11 +113,11 @@ public class Main {
             while (car != -1) {
                 nuevocod = Util.buscaArbol(raiz, (char) car);
                 if (nuevocod != null) { //Nunca debería ser null
-                    cadenabinaria += nuevocod;
+                    cadenabinaria.append(nuevocod);
                 }
                 car = entrada.read(); //por la lectura anticipada
             }
-            byte[] bval = new BigInteger(cadenabinaria, 2).toByteArray();
+            byte[] bval = new BigInteger(cadenabinaria.toString(), 2).toByteArray();
             salida.write(bval);
             entrada.close();
             salida.close();
