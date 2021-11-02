@@ -13,7 +13,9 @@ public class Main {
     public static void main(String[] args) throws IOException {
      ArrayList<Simbolo> letras  = new ArrayList<>();
       aplicarShannon("imagen.raw",letras);
+      letras  = new ArrayList<>();
 	  aplicarShannon("Argentina.txt",letras);
+      letras  = new ArrayList<>();
 	  aplicarShannon("Danes.txt",letras);
 	  System.out.println("Compresion terminada sin errores");
     }
@@ -78,6 +80,4 @@ public class Main {
                System.out.println("No se encontro el archivo: "+nombrearch);
            }
     }
-    
- 
 }
