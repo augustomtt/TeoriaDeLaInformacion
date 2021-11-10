@@ -1,14 +1,16 @@
 public class Main {
     public static void main(String[] args) {
-
-        int n = 2,m = 2;
+       // Cambiar datos de n, m entrada, y matriz.
+        int n = 2,m = 3;
         double[] entrada = new double[n];
-        entrada[0] = 0.75;entrada[1] = 0.25;
+        entrada[0] = 0.25;entrada[1] = 0.75;
         double[][] matriz = new double[n][m];
-        matriz[0][0] = 0.666666;
-        matriz[0][1] = 0.333333;
-        matriz[1][0] = 0.1;
-        matriz[1][1] = 0.9;
+        matriz[0][0] = 0.5;
+        matriz[0][1] = 0.5;
+        matriz[0][2] = 0;
+        matriz[1][0] = 0;
+        matriz[1][1] = 0.3333;
+        matriz[1][2] =0.6666;
         double[] salida = probSalida(matriz,entrada,m);
 
         for(int i=0;i<salida.length;i++) {
@@ -18,8 +20,21 @@ public class Main {
         System.out.println("H(A/b=1) = "+entropiaPosteriori(1,matriz,entrada,salida));
         System.out.println("Equivocacion: "+equivocacion(matriz,entrada,salida));
         System.out.println("Informacion Mutua: "+informacionMutua(matriz,entrada,salida));
+        double[][] matrizS = matrizSalida(matriz,entrada,salida);
+        System.out.println("Equivocacion: "+equivocacion(matrizS,salida,entrada));
+        System.out.println("Informacion Mutua: "+informacionMutua(matrizS,salida,entrada));
     }
+    public static double[][] matrizSalida(double[][] matriz,double[] entrada,double[] salida){
+        double[][] invertida = new double[salida.length][entrada.length];
 
+        for(int i=0;i<salida.length;i++){
+            for(int j=0;j<entrada.length;j++){
+                invertida[i][j] = (matriz[j][i]*entrada[j])/salida[i];
+            }
+        }
+
+        return invertida;
+    }
     public static double[] probSalida(double[][] matriz,double[] alfabeto,int m) {
         double[] salida = new double[m];
 
@@ -32,7 +47,7 @@ public class Main {
         return salida;
     }
     public static double probabilidad(int i,int j,double[][] matriz,double[] entrada,double[] salida) {
-        double resultado=0;
+        double resultado;
 
         resultado = (matriz[i][j]*entrada[i])/salida[j];
 
@@ -42,14 +57,15 @@ public class Main {
         double acum = 0;
         for(int i=0;i<entrada.length;i++){
             double prob = probabilidad(i,j,matriz,entrada,salida);
+            if(prob!=0)
             acum+=prob*(-Math.log(prob)/Math.log(2));
         }
         return acum;
     }
     public static double entropia(double[] entrada) {
         double entropia = 0;
-        for(int i=0;i<entrada.length;i++) {
-            entropia+=entrada[i]*(-Math.log(entrada[i])/Math.log(2));
+        for (double prob : entrada) {
+            entropia += prob * (-Math.log(prob) / Math.log(2));
         }
         return entropia;
     }
