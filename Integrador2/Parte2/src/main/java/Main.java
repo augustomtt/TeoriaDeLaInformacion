@@ -1,7 +1,5 @@
-import java.io.BufferedOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.OutputStream;
 import java.io.PrintStream;
 
 public class Main {
@@ -10,7 +8,14 @@ public class Main {
         PrintStream out = new PrintStream(new FileOutputStream("salidaCanales.txt"));
         System.setOut(out);
 
-        //-----------------------
+        /* Canal de ejemplo
+
+        int mej= 3;
+        double[] entradaej = {0.25,0.75};
+        double[][] canalej = {{0.5,0.5,0},{0,0.33333,0.66666}};
+
+
+        */
         int n1 = 5, m1= 3;
         int n2 = 4, m2= 4;
         int n3 = 6, m3= 4;
@@ -22,6 +27,9 @@ public class Main {
         double[][] canal1 = {{0.3,0.3,0.4},{0.4,0.4,0.2},{0.3,0.3,0.4},{0.3,0.4,0.3},{0.3,0.4,0.3}};
         double[][] canal2 = {{0.2,0.3,0.2,0.3},{0.3,0.3,0.2,0.2},{0.3,0.2,0.2,0.3},{0.3,0.3,0.3,0.1}};
         double[][] canal3 = {{0.2,0.3,0.2,0.3},{0.3,0.3,0.3,0.1},{0.2,0.2,0.3,0.3},{0.3,0.3,0.2,0.2},{0.2,0.3,0.3,0.2},{0.2,0.3,0.3,0.2}};
+
+        /*System.out.println("========== CANAL EJEMPLO ==========");
+        calculosCanales(mej, entradaej, canalej);*/
 
         System.out.println("========== CANAL 1 ==========");
         calculosCanales(m1, entrada1, canal1);
@@ -36,18 +44,22 @@ public class Main {
     }
 
     private static void calculosCanales(int m, double[] entrada, double[][] canal) {
-        double[] salida1;
+        double[] salida;
         double[][] matrizS;
-        salida1 = probSalida(canal,entrada,m);
-        for(int i=0;i<salida1.length;i++) {
-            System.out.print("P(b"+i+") = "+salida1[i]+ "    ");
+        salida = probSalida(canal,entrada,m);
+        for(int i=0;i<salida.length;i++) {
+            System.out.print("P(b"+i+") = "+salida[i]+ "    ");
         }
         System.out.println();
-        System.out.println("Equivocacion H(A/B) = "+equivocacion(canal,entrada,salida1));
-        System.out.println("Informacion Mutua I(A/B) = "+informacionMutua(canal,entrada,salida1));
-        matrizS = matrizSalida(canal,entrada,salida1);
-        System.out.println("Equivocacion: H(B/A) =  "+equivocacion(matrizS,salida1,entrada));
-        System.out.println("Informacion Mutua: I(B/A) = "+informacionMutua(matrizS,salida1,entrada));
+        System.out.println("Entropia a priori H(A): "+ entropia(entrada));
+        System.out.println("Entropia salida H(B): "+ entropia(salida));
+        System.out.println("Equivocacion H(A/B) = "+equivocacion(canal,entrada,salida));
+        System.out.println("Informacion Mutua I(A,B) = "+informacionMutua(canal,entrada,salida));
+        matrizS = matrizSalida(canal,entrada,salida);
+        System.out.println("Equivocacion: H(B/A) =  "+equivocacion(matrizS,salida,entrada));
+        System.out.println("Informacion Mutua: I(B,A) = "+informacionMutua(matrizS,salida,entrada));
+
+
         System.out.println();
     }
 
