@@ -46,13 +46,21 @@ public class Main {
     private static void calculosCanales(int m, double[] entrada, double[][] canal) {
         double[] salida;
         double[][] matrizS;
+        double[][] matrizSucesoSimul = new double[entrada.length][m];
         salida = probSalida(canal,entrada,m);
         for(int i=0;i<salida.length;i++) {
             System.out.print("P(b"+i+") = "+salida[i]+ "    ");
         }
         System.out.println();
+        
+        for(int i=0;i<entrada.length;i++)
+            for (int j = 0; j < m; j++) {
+                matrizSucesoSimul[i][j] = canal[i][j]*entrada[i];
+            }
+        
         System.out.println("Entropia a priori H(A): "+ entropia(entrada));
         System.out.println("Entropia salida H(B): "+ entropia(salida));
+        System.out.println("Entropia a fin H(A,B): "+ entropiaAFin(matrizSucesoSimul));
         System.out.println("Equivocacion H(A/B) = "+equivocacion(canal,entrada,salida));
         System.out.println("Informacion Mutua I(A,B) = "+informacionMutua(canal,entrada,salida));
         matrizS = matrizSalida(canal,entrada,salida);
@@ -108,6 +116,17 @@ public class Main {
         }
         return entropia;
     }
+
+    public static double entropiaAFin(double[][] entrada) {
+        double entropia = 0;
+        for (double[] Vecprob : entrada) {
+            for (double prob: Vecprob){ //Este doble for recorre TODA la matriz
+                entropia += prob * (-Math.log(prob) / Math.log(2));
+            }
+        }
+        return entropia;
+    }
+
     public static double equivocacion(double[][] matriz,double[] entrada,double[] salida) {
         double acum = 0;
         for(int i=0;i<salida.length;i++) {

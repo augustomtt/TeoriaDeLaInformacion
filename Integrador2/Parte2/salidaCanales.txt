@@ -2,6 +2,7 @@
 P(b0) = 0.32    P(b1) = 0.37000000000000005    P(b2) = 0.31    
 Entropia a priori H(A): 2.2464393446710154
 Entropia salida H(B): 1.580557588272082
+Entropia a fin H(A,B): 3.807585439212223
 Equivocacion H(A/B) = 2.227027850940141
 Informacion Mutua I(A,B) = 0.019411493730874252
 Equivocacion: H(B/A) =  1.5611460945412075
@@ -11,6 +12,7 @@ Informacion Mutua: I(B,A) = 0.019411493730874474
 P(b0) = 0.29    P(b1) = 0.28    P(b2) = 0.24    P(b3) = 0.19    
 Entropia a priori H(A): 1.8464393446710154
 Entropia salida H(B): 1.9814850952842409
+Entropia a fin H(A,B): 3.787194439039145
 Equivocacion H(A/B) = 1.8057093437549043
 Informacion Mutua I(A,B) = 0.04073000091611112
 Equivocacion: H(B/A) =  1.94075509436813
@@ -20,6 +22,7 @@ Informacion Mutua: I(B,A) = 0.0407300009161109
 P(b0) = 0.25    P(b1) = 0.29000000000000004    P(b2) = 0.26    P(b3) = 0.2    
 Entropia a priori H(A): 2.4464393446710155
 Entropia salida H(B): 1.9875777080498913
+Entropia a fin H(A,B): 4.402292189082415
 Equivocacion H(A/B) = 2.4147144810325236
 Informacion Mutua I(A,B) = 0.03172486363849192
 Equivocacion: H(B/A) =  1.9558528444113996
